@@ -41,7 +41,7 @@ func (t *Thumbor) BuildUrl() string {
   if t.imagePath == "" {
     return ""
   }
-  return t.Server + "/" + t.getSecureKey() + "/" + t.getFullPath()
+  return t.Server + "/" + t.getSecureKey() + "/" + t.getPartialPath()
 }
 
 func (t *Thumbor) getSecureKey() string {
@@ -51,12 +51,12 @@ func (t *Thumbor) getSecureKey() string {
   return t.generateKey()
 }
 
-func (t *Thumbor) getFullPath() string {
+func (t *Thumbor) getPartialPath() string {
   return t.size + t.filters + t.imagePath
 }
 
 func (t *Thumbor) generateKey() string {
-  url := []byte(t.getFullPath())
+  url := []byte(t.getPartialPath())
   key := []byte(t.Secret)
   mac := hmac.New(sha1.New, key)
   mac.Write(url)
