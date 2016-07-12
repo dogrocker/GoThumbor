@@ -4,7 +4,7 @@ import "testing"
 
 const (
   server    = "www.thumbor-server.com"
-  imagePath  = "http://localhost/some/path/to/image.jpg"
+  imagePath = "http://localhost/some/path/to/image.jpg"
   secret    = "test"
   resize    = "100x50"
 )
